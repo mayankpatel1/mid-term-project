@@ -7,7 +7,7 @@ resource "aws_instance" "mayank-tf-web-server" {
   instance_type = var.instance_type
   key_name      = var.key_name
   subnet_id     = var.subnet_id  # Use the specified subnet for launching the instance
-  iam_instance_profile = aws_iam_role.example_role.name
+  iam_instance_profile = aws_iam_role.mayank.tf-web-server-role.name
 
   tags = {
     Name = "Web Server"
@@ -22,8 +22,8 @@ resource "aws_instance" "mayank-tf-web-server" {
               EOF
 }
 
-resource "aws_security_group" "web_server_sg" {
-  name        = "web_server_sg"
+resource "aws_security_group" "mayank-tf-web-server-sg" {
+  name        = "mayank-tf-web-server-sg"
   description = var.web_server_sg_description
 
   ingress {
@@ -48,12 +48,12 @@ resource "aws_security_group" "web_server_sg" {
   }
 }
 
-resource "aws_iam_instance_profile" "s3_access_role" {
-  name = "s3_access_role"
+resource "aws_iam_instance_profile" "mayank-tf-s3-access-role" {
+  name = "mayank-tf-s3-access-role"
 }
 
-resource "aws_iam_role" "s3_access_role" {
-  name = "s3_access_role"
+resource "aws_iam_role" "mayank-tf-s3-access-role" {
+  name = "mayank-tf-s3-access-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -83,7 +83,7 @@ resource "aws_iam_policy" "s3_access_policy" {
         ],
         Effect   = "Allow",
         Resource = [
-          "arn:aws:s3:::your-s3-bucket-name",
+          "arn:aws:s3:::your-mayank-tf-s3-bucket",
           "arn:aws:s3:::your-s3-bucket-name/*",
         ],
       }
