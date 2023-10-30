@@ -1,21 +1,27 @@
-# 3 Tier Website Hosting 
+# 3 Tier Website Hosting
 
-My purpose was to host a website in a 3 tier web architecture which would log new users who register usin lambda function and API gateway. It uses a Virtual Private Cloud (VPC), EC2 instances and load balancing.
+This project aims to host a website using a 3-tier web architecture, which logs new users when they register using a Lambda function and API Gateway. The architecture includes a Virtual Private Cloud (VPC), EC2 instances, and load balancing.
 
 ## Table Of Contents
 
--Prerequisites
--Directory Structure
--Configuration
--Deployment
--Cleanup
+- [Prerequisites](#prerequisites)
+- [Directory Structure](#directory-structure)
+- [Configuration](#configuration)
+- [Deployment](#deployment)
+- [Cleanup](#cleanup)
 
 ## Prerequisites
 
-To get started you will need Terraform installed in your terminal and AWS ClI with credentials. 
+Before you begin, make sure you have the following tools and resources:
+
+- [Terraform](https://www.terraform.io/) installed on your local machine.
+- AWS CLI configured with your credentials.
 
 ### Directory Structure
 
+The project's directory structure is organized as follows:
+
+```plaintext
 mayank-project/
 │
 ├── vpc/
@@ -49,22 +55,3 @@ mayank-project/
 ├── variables.tf
 ├── terraform.tfvars
 ├── outputs.tf
-
-
-
-### Configuration
-
-Firstly I wrote my backend.tf and provider.tf files to intialise setup. Then I wrote my modules with variables to configure my VPC with EC2, Lambda, DynamoDB and S3 Bucket.
-
-## Deployment
-
-* How to run the program
-
-Terraform plan 
-Terraform Validate
-Terraform Apply
-
-
-### Clean Up
-
-Terraform destroy command
